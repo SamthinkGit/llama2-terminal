@@ -1,4 +1,0 @@
-# This is only a provisional requirements, is not full
-inquirer
-cmd2
-haystack

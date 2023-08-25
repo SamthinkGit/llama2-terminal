@@ -1,0 +1,7 @@
+inquirer
+cmd2
+farm-haystack
+torch
+transformers>=4.0.0
+bitsandbytes>=3.9.0
+pyyaml

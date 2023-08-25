@@ -1,0 +1,17 @@
+general:
+  logging_level: WARNING
+  pytorch_cuda_config: max_split_size_mb:21
+
+model:
+
+  id: meta-llama/Llama-2-7b-chat-hf
+  token: HUGGINGFACE_TOKEN
+  token_length: 1000
+  summary_frequency: 3
+
+agent:
+  name: Sarah
+
+socket:
+  REQ: tcp://localhost:12443
+  REP: tcp://*:12443

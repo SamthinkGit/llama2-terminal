@@ -34,12 +34,17 @@ class LlamaAgent(ABC):
         pass
 
     def build_model(self) -> PromptNode:
-        # Initializing
+
         os.environ['PYTORCH_CUDA_ALLOC_CONF'] = self.config['general']['pytorch_cuda_config']
+        hf_token = self.config['model'].get('token')
+        if not hf_token:
+            hf_token = os.environ.get('HUGGINGFACE_TOKEN')
+            if not hf_token or hf_token == 'HUGGINGFACE_TOKEN':
+                raise ValueError("HUGGINGFACE_TOKEN not found in environment variable.")
+
         torch.cuda.empty_cache()
 
         # Building Model
-        hf_token = self.config['model']['token']
         model_id = self.config['model']['id']
         max_length = self.config['model']['token_length']
 
