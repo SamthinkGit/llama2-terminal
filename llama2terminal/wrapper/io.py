@@ -1,7 +1,6 @@
 import subprocess
 import threading
 import config
-from io import TextIOWrapper
 from queue import Queue
 
 class CommandLineReader:

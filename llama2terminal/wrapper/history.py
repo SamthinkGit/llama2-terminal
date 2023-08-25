@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import List, Optional
-from customUtils import TerminalColors
+from llama2terminal.wrapper.colors import TerminalColors
 
 class CommandEntry:
     def __init__(self, command: str):

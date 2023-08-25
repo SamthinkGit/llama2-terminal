@@ -4,9 +4,9 @@ import inquirer
 import config
 import yaml
 
-from customUtils import TerminalColors
-from CmdLogUtils import CommandLogger
-from CommandLineReader import CommandLineReader
+from llama2terminal.wrapper.colors import TerminalColors
+from llama2terminal.wrapper.history import CommandLogger
+from llama2terminal.wrapper.io import CommandLineReader
 
 class ShellWrapper(cmd2.Cmd):
 
