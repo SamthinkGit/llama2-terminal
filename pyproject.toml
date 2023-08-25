@@ -16,8 +16,8 @@ inquirer = "*"
 cmd2 = "*"
 haystack = "*"
 torch = "*"
-transformers = "4.0.0"
-bitsandbytes = "*"
+transformers = "^4.0.0"
+bitsandbytes = "^0.3.9"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.4"

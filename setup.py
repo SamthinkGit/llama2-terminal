@@ -10,7 +10,7 @@ setup(
         "farm-haystack",
         "torch",
         "transformers>=4.0.0",
-        "bitsandbytes>=3.9.0",
+        "bitsandbytes>=0.3.9",
         "pyyaml"
     ],
     author="SamthinkGit",
