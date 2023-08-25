@@ -28,8 +28,6 @@ class CommandLineReader:
                 self.stderr_queue.put(line)
 
     def get_pwd(self):
-        if self.sys_type == "python.exe":
-            return os.getcwd()
         output, _ = self.run_command(config.system_pwd[self.sys_type])
         return output
         

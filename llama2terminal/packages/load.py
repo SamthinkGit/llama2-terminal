@@ -9,7 +9,7 @@ class PackageLoader:
     def __init__(self):
 
         self.l2t_path = get_l2t_path()
-        yaml_path = os.path.join(self.l2t_path, "llama2terminal", "packages", "pkg.yaml")
+        yaml_path = os.path.join(self.l2t_path, "packages", "pkg.yaml")
 
         with open(yaml_path, "r") as file:
             self.packages = yaml.safe_load(file)
@@ -37,7 +37,7 @@ class PackageLoader:
         package_dir = self.packages[package_name]["dir"]
 
         # Load "launch.py"
-        spec = importlib.util.spec_from_file_location("launch_module", os.path.join(self.l2t_path, "llama2terminal", "packages", package_dir, "launch.py"))
+        spec = importlib.util.spec_from_file_location("launch_module", os.path.join(self.l2t_path, "packages", package_dir, "launch.py"))
         launch_module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(launch_module)
         
@@ -61,7 +61,7 @@ class PackageLoader:
             raise ValueError(f"Directory for package {package_name} has not been found.")
 
         # Launch run.py
-        spec = importlib.util.spec_from_file_location("run_module", os.path.join(self.l2t_path, "llama2terminal", "packages", package_dir, "run.py"))
+        spec = importlib.util.spec_from_file_location("run_module", os.path.join(self.l2t_path, "packages", package_dir, "run.py"))
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         module.__start__(*args)

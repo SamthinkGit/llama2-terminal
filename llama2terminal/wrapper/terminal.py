@@ -15,8 +15,9 @@ class ShellWrapper(cmd2.Cmd):
     def __init__(self):
 
         super().__init__()
+
         self.l2t_path = config.get_l2t_path()
-        yaml_path = os.path.join(self.l2t_path, "llama2terminal", "wrapper", "params.yaml")
+        yaml_path = os.path.join(self.l2t_path, "wrapper", "params.yaml")
         with open(yaml_path) as file:
             self.params = yaml.safe_load(file)
 

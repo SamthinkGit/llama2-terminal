@@ -16,7 +16,7 @@ class LlamaAgent(ABC):
 
     def __init__(self):
         self.l2t_path = get_l2t_path()
-        config_path = os.path.join(self.l2t_path, "llama2terminal", "base", "config.yaml")
+        config_path = os.path.join(self.l2t_path, "base", "config.yaml")
         with open(config_path, 'r') as stream:
             self.config = yaml.safe_load(stream)
 
