@@ -1,0 +1,4 @@
+talk:
+  dir: talk
+  load_at_start: False
+  info: Some other info

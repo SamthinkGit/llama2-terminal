@@ -1,6 +1,6 @@
-import inquirer
 import io
 import sys
+import inquirer
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
@@ -23,4 +23,9 @@ system_end_msgs = {
     'powershell.exe': '##END_OF_OUTPUT##',
     'cmd.exe': 'REM END_OF_OUTPUT',
     'python.exe': '##END_OF_OUTPUT##'
+}
+
+system_pwd = {
+    'powershell.exe': 'pwd | findstr :',
+    'cmd.exe': 'cd',
 }

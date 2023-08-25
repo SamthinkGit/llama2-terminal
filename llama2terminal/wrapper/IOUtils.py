@@ -1,4 +1,5 @@
 import subprocess
+import os
 import threading
 import config
 from queue import Queue
@@ -23,9 +24,15 @@ class CommandLineReader:
     def error_reader(self):
         while not self.stop_event.is_set():
             line = self.shell_process.stderr.readline()
-            if line.strip():
+            if line:
                 self.stderr_queue.put(line)
 
+    def get_pwd(self):
+        if self.sys_type == "python.exe":
+            return os.getcwd()
+        output, _ = self.run_command(config.system_pwd[self.sys_type])
+        return output
+        
     def run_command(self, cmd):
 
         # Send the command to the process
@@ -47,14 +54,14 @@ class CommandLineReader:
                 continue
             if delimiter in line:
                 break
-            if line.strip():
+            if line:
                 output_lines.append(line) 
 
         # Read non-blocking errors
         error_lines = []
         while not self.stderr_queue.empty():
             line = self.stderr_queue.get_nowait()
-            if line.strip():
+            if line:
                 error_lines.append(line)
 
         # Flush other outputs 
