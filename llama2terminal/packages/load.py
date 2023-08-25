@@ -2,13 +2,13 @@ import yaml
 import os
 import importlib.util
 
+from llama2terminal.wrapper.config import get_l2t_path
+
 class PackageLoader:
 
     def __init__(self):
 
-        self.l2t_path = os.environ.get("L2T_PATH")
-        if not self.l2t_path:
-            raise EnvironmentError("Environment variable 'L2T_PATH' is not defined.")
+        self.l2t_path = get_l2t_path()
         yaml_path = os.path.join(self.l2t_path, "llama2terminal", "packages", "pkg.yaml")
 
         with open(yaml_path, "r") as file:

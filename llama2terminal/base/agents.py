@@ -4,6 +4,8 @@ import yaml
 import torch
 
 from llama2terminal.base.prompts import PromptTemplate, Modules
+from llama2terminal.wrapper.config import get_l2t_path
+
 from abc import abstractmethod, ABC
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from haystack.agents.conversational import ConversationalAgent
@@ -12,7 +14,9 @@ from haystack.nodes import PromptNode
 
 class LlamaAgent(ABC):
 
-    def __init__(self, config_path="config.yaml"):
+    def __init__(self):
+        self.l2t_path = get_l2t_path()
+        config_path = os.path.join(self.l2t_path, "llama2terminal", "base", "config.yaml")
         with open(config_path, 'r') as stream:
             self.config = yaml.safe_load(stream)
 

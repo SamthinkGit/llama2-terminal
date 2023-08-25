@@ -1,4 +1,5 @@
 import io
+import os
 import sys
 import inquirer
 
@@ -29,3 +30,10 @@ system_pwd = {
     'powershell.exe': 'pwd | findstr :',
     'cmd.exe': 'cd',
 }
+
+def get_l2t_path():
+    
+        l2t_path = os.environ.get("L2T_PATH")
+        if not l2t_path:
+            raise EnvironmentError("Environment variable 'L2T_PATH' is not defined.")
+        return l2t_path

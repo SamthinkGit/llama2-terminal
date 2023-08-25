@@ -1,10 +1,10 @@
 import cmd2
-import psutil
 import os
 import inquirer
-import config
 import yaml
 
+
+import llama2terminal.wrapper.config as config
 from llama2terminal.wrapper.colors import TerminalColors
 from llama2terminal.wrapper.history import CommandLogger
 from llama2terminal.wrapper.IOUtils import CommandLineReader
@@ -13,9 +13,13 @@ from llama2terminal.packages.load import package_loader
 class ShellWrapper(cmd2.Cmd):
 
     def __init__(self):
+
         super().__init__()
-        with open('params.yaml', 'r') as file:
+        self.l2t_path = config.get_l2t_path()
+        yaml_path = os.path.join(self.l2t_path, "llama2terminal", "wrapper", "params.yaml")
+        with open(yaml_path) as file:
             self.params = yaml.safe_load(file)
+
         self.listening = False
         self.sys_type = self.params['DEFAULT']['system']
         self.cmd_logger = CommandLogger()

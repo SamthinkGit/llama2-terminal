@@ -1,7 +1,7 @@
 import subprocess
 import os
 import threading
-import config
+import llama2terminal.wrapper.config as config
 from queue import Queue
 
 class CommandLineReader:
