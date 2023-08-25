@@ -34,5 +34,6 @@ def get_l2t_path():
     
         l2t_path = os.environ.get("L2T_PATH")
         if not l2t_path:
-            os.environ["L2T_PATH"] = pkg_resources.resource_filename("llama2terminal", '')
+            l2t_path = pkg_resources.resource_filename("llama2terminal", '')
+            os.environ["L2T_PATH"] = l2t_path
         return l2t_path

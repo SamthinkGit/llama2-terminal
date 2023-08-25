@@ -19,12 +19,12 @@ def generate_config():
         List('model',
              message="Choose a Llama model",
              choices=[
-                 'Llama-2-7b-hf',
-                 'Llama-2-7b-chat-hf (recommended)',
-                 'Llama-2-13b-hf',
-                 'Llama-2-13b-chat-hf (recommended for PCs with >12GB VRAM)',
-                 'Llama-2-70b-hf',
-                 'Llama-2-70b-chat-hf (most effective, very heavy)'
+                 'meta-llama/Llama-2-7b-hf',
+                 'meta-llama/Llama-2-7b-chat-hf (recommended)',
+                 'meta-llama/Llama-2-13b-hf',
+                 'meta-llama/Llama-2-13b-chat-hf (recommended for PCs with >12GB VRAM)',
+                 'meta-llama/Llama-2-70b-hf',
+                 'meta-llama/Llama-2-70b-chat-hf (most effective, very heavy)'
              ])
     ]
     answers = prompt(questions)

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="llama2-terminal",
-    version="0.1.0",
+    version="0.1.5",
     packages=find_packages(),
     install_requires=[
         "inquirer",
@@ -13,6 +13,7 @@ setup(
         "bitsandbytes>=0.3.9",
         "pyyaml"
     ],
+    include_package_data=True,
     author="SamthinkGit",
     author_email="sebastianmayorquin@gmail.com",
     description="Descripción breve del proyecto",

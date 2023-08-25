@@ -5,7 +5,7 @@ general:
   pytorch_cuda_config: max_split_size_mb:21
   welcome: true
 model:
-  id: meta-llama/Llama-2-7b-chat-hf
+  id: Llama-2-7b-chat-hf
   token: HUGGINGFACE_TOKEN
   token_length: 1000
 socket:

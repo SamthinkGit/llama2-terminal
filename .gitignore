@@ -2,3 +2,4 @@
 build/
 dist/
 llama2_terminal.egg-info/
+.pypirc
