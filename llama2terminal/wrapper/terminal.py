@@ -22,6 +22,7 @@ class ShellWrapper(cmd2.Cmd):
             self.params = yaml.safe_load(file)
 
         self.listening = False
+        self.debug = True
         self.sys_type = self.params['DEFAULT']['system']
         self.cmd_logger = CommandLogger()
         self.clr = CommandLineReader(self.sys_type)

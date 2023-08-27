@@ -38,7 +38,9 @@ def generate_config():
         ]
         answers = prompt(questions)
         hugging_face_token = answers['token']
-
+    else:
+        hugging_face_token = '__token__'
+    
     # Choose a name for the model
     questions = [
         Text('name', message="Choose a name for your model (Sarah by default)", default="Sarah")

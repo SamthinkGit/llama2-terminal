@@ -1,11 +1,12 @@
 agent:
   name: Sarah
 general:
-  logging_level: WARNING
+  logging_level: ERROR
+  logging_haystack_level: ERROR
   pytorch_cuda_config: max_split_size_mb:21
   welcome: true
 model:
-  id: Llama-2-7b-chat-hf
+  id: meta-llama/Llama-2-7b-chat-hf
   token: HUGGINGFACE_TOKEN
   token_length: 1000
 socket:

@@ -10,14 +10,23 @@ authors = [{name = "SamthinkGit", email = "sebastianmayorquin@gmail.com"}]
 license = { file = "LICENSE" }
 readme = "README.md"
 
+[tool.poetry]
+name = "llama2terminal"
+version = "0.1.5"
+description = "Llama2 Terminal Tools Project"
+authors = ["SamthinkGit <sebastianmayorquin@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
 [tool.poetry.dependencies]
 python = "^3.8"
 inquirer = "*"
 cmd2 = "*"
 haystack = "*"
 torch = "*"
-transformers = "^4.0.0"
-bitsandbytes = "^0.3.9"
+yaspin = "*"
+transformers = "*"
+bitsandbytes = "*"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.4"

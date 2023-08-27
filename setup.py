@@ -10,8 +10,9 @@ setup(
         "farm-haystack",
         "torch",
         "transformers>=4.0.0",
-        "bitsandbytes>=0.3.9",
+        "bitsandbytes>=0.39.0",
         "pyyaml"
+        "yaspin"
     ],
     include_package_data=True,
     author="SamthinkGit",
