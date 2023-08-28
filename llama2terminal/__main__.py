@@ -4,8 +4,7 @@ from llama2terminal.wrapper.terminal import ShellWrapper
 from llama2terminal.wrapper.config import get_l2t_path
 from llama2terminal.config.settings import generate_config
 
-if __name__ == "__main__":
-    
+def main():    
     l2t_path = get_l2t_path()
     config_path = os.path.join(l2t_path, "base", "config.yaml")
     with open(config_path, 'r') as file:
@@ -21,3 +20,6 @@ if __name__ == "__main__":
 
     app = ShellWrapper()
     app.cmdloop()
+
+if __name__ == "__main__":
+    main()
