@@ -1,30 +1,23 @@
-from typing import Optional, List, Dict, Any 
+from typing import Optional, List, Dict, Any
 from abc import abstractmethod, ABC
-from dataclasses import dataclass
-
-@dataclass
-class Modules:
-    CONVERSATIONAL_MODEL: str = 'You are a conversational model, always answer to the last query of the human'
-    ONE_LINE: str = "Answer always concisely in one line with a maximum of 20 words."
-    SHORT_ANSWER: str = "Provide a detailed short answer in the range of 20-30 words."
-    ONLY_CODE: str = "Only provide code fragments. Do not include any explanatory text."
-    EXAMPLES: str = "Provide examples to illustrate your point."
-    DO_NOT_MODIFY_PROMPT: str = "Keep this prompt unmodified"
-    ONLY_ALPHANUMERIC_AND_EMOJIS: str = "Only use characters between a-zA-Z0-9 and/or emojis (only when appropiate)" 
-
 
 class DynamicParam(ABC):
     
-    def __init__(self):
-        return
+    def __init__(self, sanitize: Optional[bool] = True):
+        self.sanitize = sanitize
 
     def to_dynamic(self, to_str_callback):
         self._dynamic_str = to_str_callback
 
+    def sanitize_str(self, input: str) -> str:
+        return input.replace('\\','\\\\')
+        
     def __str__(self) -> str:
         if hasattr(self, "_dynamic_str"):
+            if self.sanitize:
+                return self.sanitize_str(self._dynamic_str())
             return self._dynamic_str()
-        return "Dynamic Param function not implemente"
+        return "Dynamic Param function not implemented"
     
 class PromptGenerator:
     
@@ -56,7 +49,7 @@ class PromptGenerator:
 
         if self.dynamic_params:
             for param, value in self.dynamic_params.items():
-               prompt += f"[{param}] {str(value)} [\{param}]\n"
+               prompt += f"[{param}]\n {str(value)} \n[\{param}]\n"
 
         if self.hard_params:
            for param, value in self.hard_params.items():

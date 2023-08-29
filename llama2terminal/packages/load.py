@@ -3,6 +3,7 @@ import os
 import importlib.util
 
 from llama2terminal.wrapper.config import get_l2t_path
+import llama2terminal.wrapper.terminal as wrapper
 
 class PackageLoader:
 
@@ -29,7 +30,10 @@ class PackageLoader:
 
         if package_name in self.loaded_modules:
             return
-        
+
+        wrapper.ShellWrapper.terminal.poutput(f"Loading Module {package_name}...")        
+        wrapper.ShellWrapper.terminal.stdout.flush()
+
         # Verify package is installled 
         if package_name not in self.packages:
             raise ValueError(f"Package '{package_name}' is not installed.")

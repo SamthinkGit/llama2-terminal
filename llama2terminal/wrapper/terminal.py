@@ -10,7 +10,10 @@ from llama2terminal.wrapper.history import CommandLogger
 from llama2terminal.wrapper.IOUtils import CommandLineReader
 from llama2terminal.packages.load import package_loader
 
+
 class ShellWrapper(cmd2.Cmd):
+
+    terminal = None
 
     def __init__(self):
 
@@ -27,6 +30,7 @@ class ShellWrapper(cmd2.Cmd):
         self.cmd_logger = CommandLogger()
         self.clr = CommandLineReader(self.sys_type)
         self.change_prompt()
+        ShellWrapper.terminal = self
 
     def change_prompt(self):
         color = TerminalColors.GREEN if self.listening else TerminalColors.ENDC
@@ -62,16 +66,12 @@ class ShellWrapper(cmd2.Cmd):
                 self.sys_type = inquirer.prompt(config.system_choices)['system']
                 self.clr.close()
                 self.clr = CommandLineReader(self.sys_type)
-            case "log":
-                self.cmd_logger.display_log()
-            case "clear":
-                self.cmd_logger.clear()
             case "stop":
                 self.clr.close()
                 return True
             case _:
                 try:
-                    package_loader.run_module(split_args[0],split_args[1:])
+                    package_loader.run_module(split_args[0],split_args[0:])
                 except ValueError as e:
                     self.perror(e)
         

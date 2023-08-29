@@ -1,3 +1,6 @@
 talk:
   dir: talk
   load_at_start: False
+log:
+  dir: log
+  load_at_start: False

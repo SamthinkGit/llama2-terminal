@@ -15,11 +15,12 @@ class CommandEntry:
     def set_error(self, error: str):
         self.error = error
 
-    def to_raw(self):
-        return f"<[TIMESTAMP]{self.timestamp}[\TIMESTAMP]\n" + \
-                f"[COMMAND]{self.command}[\COMMAND]\n" + \
-                f"[OUTPUT]{self.output}[\OUTPUT]\n" + \
-                f"[ERROR]{self.error}[\ERROR]>"
+    def to_raw(self) -> str:
+        return ("<(TIMESTAMP)" + str(self.timestamp) + "(\\TIMESTAMP)\n" +
+            "(COMMAND)" + self.command + "(\\COMMAND)\n" +
+            "(OUTPUT)" + str(self.output) + "(\\OUTPUT)\n" +
+            "(ERROR)" + str(self.error) + "(\\ERROR)>")
+
 
     def __str__(self):
         return f"{TerminalColors.ORANGE}{self.timestamp}: {self.command}\n \
@@ -51,3 +52,7 @@ class CommandLogger:
         for entry in self.commands:
             print(entry)
             print('=' * 50)
+
+    def __str__(self):
+        raw_logs = [cmd.to_raw() for cmd in self.commands]
+        return '\n'.join(raw_logs)

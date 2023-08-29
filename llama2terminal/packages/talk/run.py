@@ -1,10 +1,10 @@
-from llama2terminal.base.agents import LlamaConversationalAgent
+from llama2terminal.base.agents.agents import LlamaConversationalAgent
 from llama2terminal.wrapper.colors import TerminalColors as c
 from llama2terminal.wrapper.utils import typing_print
 import gc
 import torch
 
-def __start__(*args):
+def __start__(args):
     
     llama = LlamaConversationalAgent()
     print(f"{c.ORANGE}==== CHATBOX, use 'exit' to escape ===={c.ENDC}")

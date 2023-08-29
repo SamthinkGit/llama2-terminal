@@ -25,7 +25,10 @@ def generate_config():
                  'meta-llama/Llama-2-13b-chat-hf (recommended for PCs with >12GB VRAM)',
                  'meta-llama/Llama-2-70b-hf',
                  'meta-llama/Llama-2-70b-chat-hf (most effective, very heavy)'
-             ])
+             ],
+             default='meta-llama/Llama-2-7b-chat-hf'
+             )
+
     ]
     answers = prompt(questions)
     model_id = answers['model'].split()[0]
