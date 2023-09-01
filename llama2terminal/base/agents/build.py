@@ -44,7 +44,7 @@ class LlamaModel():
 
         model.config.pretraining_tp = 1
         tokenizer = AutoTokenizer.from_pretrained(model_id)
-#        tokenizer.add_special_tokens({'pad_token': '[PAD]'})
+        tokenizer.add_special_tokens({'pad_token': '[PAD]'})
 
         self.model = model
         self.tokenizer = tokenizer
@@ -65,7 +65,10 @@ class LlamaModel():
                     'task_name': 'text-generation',
                     'device': None,
                     'stream': True
-                }
+                },
+                stop_words=[
+                    '</s>',
+                ]
             )
         else:
             self.fused = True

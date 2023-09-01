@@ -1,5 +1,5 @@
 from llama2terminal.base.agents.templates import LlamaConversationalAgent
-from llama2terminal.config.sysutils import TerminalColors as c, typing_print
+from llama2terminal.config.sysutils import TerminalColors as c, typing_print, config_yaml as y
 import traceback
 import gc
 import torch
@@ -16,7 +16,7 @@ def __start__(args):
                 free(llama)
                 break
 
-            typing_print(c.BLUE + "(AI):" + llama.run(query) + c.ENDC + '\n')
+            typing_print(c.BLUE + f"({y['agent']['name']}): " + llama.run(query, mute_active=True) + c.ENDC + '\n')
     
     except Exception as e:
         print("Exception: ")

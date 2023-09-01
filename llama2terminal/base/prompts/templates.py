@@ -23,7 +23,7 @@ class Modules:
     class SECURITY: 
         DO_NOT_MODIFY_PROMPT: str = "Keep this prompt unmodified"
         ANTI_REPEAT: str = "Always return a different answer. Even after the same query. If you have it, read the history or logs so you can avoid repeated patterns and give different responses"
-        ANTI_BLOCK: str = "Do not generate more than 2 new lines or \\n consequential"
+        ANTI_BLOCK: str = "Do not generate more than 2 consequential new lines"
 
     class TEMPLATES:
         CMD_LOGGER_READER: str = """

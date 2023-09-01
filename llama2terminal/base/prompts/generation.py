@@ -37,25 +37,24 @@ class PromptGenerator:
 
     def __str__(self) -> str:
 
-        prompt = f"--- START OF CONTEXT ---"
-        prompt = f"[INST] Your name is {self.name} [INST]\n"
+        prompt = f"<s>[INST] <<SYS>>"
+        prompt += f"Your name is {self.name}\n"
         
         if self.modules:
             module_list = '\n- '.join(self.modules)
-            prompt += f"[MODULES] You MUST ALWAYS follow these rules:\n- {module_list}\n[MODULES]\n"
+            prompt += f"[MODULES] You MUST ALWAYS follow these rules:\n- {module_list}\n[/MODULES]\n"
 
 
         if self.dynamic_params:
             for param, value in self.dynamic_params.items():
-               prompt += f"[{param}]\n {str(value)} \n[\{param}]\n"
+               prompt += f"[{param}]\n {str(value)} \n[/{param}]\n"
 
         if self.hard_params:
            for param, value in self.hard_params.items():
-               prompt += f"[{param}] {value} [\{param}]\n"
-        
-        prompt += f"[QUERY] {self.query} [QUERY]\n"
-        prompt += f"--- END OF CONTEXT ---\n"
-        prompt += f"Final Answer: "
+               prompt += f"[{param}] {value} [/{param}]\n"
+        prompt += f"<</SYS>>\n"
+        prompt += "Human: {query} [/INST] \n"
+        prompt += f"({self.name}): "
         
         return prompt
 

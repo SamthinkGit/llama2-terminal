@@ -66,7 +66,7 @@ def get_l2t_path():
             os.environ["L2T_PATH"] = l2t_path
         return l2t_path
 
-def typing_print(text, delay=0.03):
+def typing_print(text, delay=0.01):
     for char in text:
         print(char, end='', flush=True)
         time.sleep(delay)

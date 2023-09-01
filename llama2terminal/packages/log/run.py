@@ -27,7 +27,7 @@ def __start__(args):
         case "query":
 
             if launch.llama_log_model is None:
-                print("Llama model has not been loaded, use llama load first", file=sys.stderr)
+                print("Llama model has not been loaded, use <llama log load> first", file=sys.stderr)
                 return
             
             query = input("Query: ")
@@ -36,7 +36,7 @@ def __start__(args):
 
         case "talk":
             if launch.llama_log_model is None:
-                print("Llama model has not been loaded, use llama load first", file=sys.stderr)
+                print("Llama model has not been loaded, use <llama log load> first", file=sys.stderr)
                 return
 
             print(f"{c.ORANGE}==== CHATBOX, use 'exit' to escape ===={c.ENDC}")
