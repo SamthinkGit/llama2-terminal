@@ -1,2 +1,2 @@
-from llama2terminal.base.agents.agents import LlamaCommandLineReader
-llama_log_model : LlamaCommandLineReader = None
+from llama2terminal.base.agents.templates import LlamaCommandLineReaderAgent
+llama_log_model : LlamaCommandLineReaderAgent = None

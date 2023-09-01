@@ -24,14 +24,12 @@ class PromptGenerator:
     def __init__(
         self,
         name: Optional[str] = "LLM",
-        history: Optional[str] = None,
         hard_params: Optional[Dict[str, Any]] = None,
         dynamic_params: Optional[Dict[str, DynamicParam]] = None,
         modules: Optional[List[str]] = None,
         query: Optional[str] = ""
     ) -> None:
         self.name = name
-        self.history = history
         self.hard_params = hard_params
         self.dynamic_params = dynamic_params
         self.modules = modules if modules else []
@@ -54,8 +52,6 @@ class PromptGenerator:
         if self.hard_params:
            for param, value in self.hard_params.items():
                prompt += f"[{param}] {value} [\{param}]\n"
-        if self.history:
-            prompt += f"[HISTORY] {self.history} [HISTORY]\n"
         
         prompt += f"[QUERY] {self.query} [QUERY]\n"
         prompt += f"--- END OF CONTEXT ---\n"

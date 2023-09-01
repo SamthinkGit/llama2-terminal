@@ -4,8 +4,8 @@ import inquirer
 import yaml
 
 
-import llama2terminal.wrapper.config as config
-from llama2terminal.wrapper.colors import TerminalColors
+import llama2terminal.config.sysutils as config
+from llama2terminal.config.sysutils import TerminalColors
 from llama2terminal.wrapper.history import CommandLogger
 from llama2terminal.wrapper.IOUtils import CommandLineReader
 from llama2terminal.packages.load import package_loader

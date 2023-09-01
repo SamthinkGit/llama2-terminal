@@ -4,7 +4,7 @@ import os
 import threading
 import sys
 
-import llama2terminal.wrapper.config as config
+import llama2terminal.config.sysutils as config
 
 from queue import Queue
 from contextlib import contextmanager
@@ -78,19 +78,3 @@ class CommandLineReader:
             self.stop_event.set()
             self.shell_process.terminate()
             self.stderr_thread.join()
-
-@contextmanager
-def mute(active: bool = True):
-
-    if active:
-        old_stdout = sys.stdout
-        old_stderr = sys.stderr
-        sys.stdout = io.StringIO()
-        sys.stderr = io.StringIO()
-        try:
-            yield
-        finally:
-            sys.stdout = old_stdout
-            sys.stderr = old_stderr
-    else:
-        yield

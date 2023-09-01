@@ -1,8 +1,7 @@
 import os
 import yaml
 from inquirer import prompt, List, Text
-from llama2terminal.wrapper.colors import TerminalColors
-from llama2terminal.wrapper.config import get_l2t_path
+from llama2terminal.config.sysutils import TerminalColors, get_l2t_path
 
 def generate_config():
     # Display banner
@@ -65,7 +64,7 @@ def generate_config():
 
     # Update the YAML files
     l2t_path = get_l2t_path()
-    config_path = os.path.join(l2t_path, "base", "config.yaml")
+    config_path = os.path.join(l2t_path, "config", "config.yaml")
     with open(config_path, 'r') as file:
         config_data = yaml.safe_load(file)
         config_data['model']['id'] = model_id
@@ -83,5 +82,5 @@ def generate_config():
 
     # Completion message
     print("\nYour Llama2 Terminal is now configured!")
-    print("If you need to change this settings, you can run <llama config>'.")
+    print("If you need to change this settings, you can run <llama config>.")
     print("Enjoy using Llama2 Terminal!")

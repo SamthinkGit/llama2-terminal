@@ -2,7 +2,7 @@ import yaml
 import os
 import importlib.util
 
-from llama2terminal.wrapper.config import get_l2t_path
+from llama2terminal.config.sysutils import get_l2t_path
 import llama2terminal.wrapper.terminal as wrapper
 
 class PackageLoader:
